@@ -1,3 +1,5 @@
-<card>
-  <p>card-stack works!</p>
-</card>
+@if (stack) { @for (card of stack.cards; track $index) {
+<card-target [card]="card" />
+}
+<div>{{ stack.colour }}</div>
+}

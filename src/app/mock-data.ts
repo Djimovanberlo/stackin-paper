@@ -9,6 +9,23 @@ export const mockTargetCards: CardTargetStack[] = [
         colour: GameColour.Red,
         value: 1,
       },
+      {
+        colour: GameColour.Red,
+        value: 1,
+      },
+    ],
+  },
+  {
+    colour: GameColour.Blue,
+    cards: [
+      {
+        colour: GameColour.Blue,
+        value: 1,
+      },
+      {
+        colour: GameColour.Blue,
+        value: 1,
+      },
     ],
   },
 ];

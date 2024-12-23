@@ -1,18 +1,11 @@
-import { Component, computed, inject } from '@angular/core';
-import { CardTargetStackComponent } from '../card-stack/card-target-stack.component';
-import { GameService } from '../game.service';
+import { Component } from '@angular/core';
+import { PlayerBoardComponent } from '../player-board/player-board.component';
+import { TargetBoardComponent } from '../target-board/target-board.component';
 
 @Component({
   selector: 'game-board',
-  imports: [CardTargetStackComponent],
+  imports: [PlayerBoardComponent, TargetBoardComponent],
   templateUrl: './game-board.component.html',
   styleUrl: './game-board.component.scss',
 })
-export class GameBoardComponent {
-  private gameService = inject(GameService);
-  targetCardsStacks = computed(() => this.gameService.targetCardsStacks());
-
-  ngOnInit() {
-    console.log('TEST', this.targetCardsStacks());
-  }
-}
+export class GameBoardComponent {}

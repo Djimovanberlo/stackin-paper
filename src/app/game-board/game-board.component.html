@@ -1,9 +1,2 @@
-<div class="target-cards">
-  @for (targetCardStack of targetCardsStacks(); track $index) {
-  <card-target-stack
-    [colour]="targetCardStack.colour"
-    [cards]="targetCardStack.cards"
-  />
-  }
-</div>
-<div class="player-cards">player</div>
+<target-board />
+<player-board />

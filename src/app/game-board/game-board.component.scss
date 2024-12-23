@@ -5,19 +5,11 @@
   justify-content: center;
   align-items: center;
 
-  .target-cards,
-  .player-cards {
-    width: 100%;
-    border: 1px solid blue;
-    display: grid;
-    place-items: center;
-  }
-
-  .target-cards {
+  target-board {
     flex: 2;
   }
 
-  .player-cards {
+  player-board {
     flex: 1;
   }
 }
