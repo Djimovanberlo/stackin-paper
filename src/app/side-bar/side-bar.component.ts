@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { GameService } from '../game.service';
 
 @Component({
@@ -7,7 +7,6 @@ import { GameService } from '../game.service';
   styleUrl: './side-bar.component.scss',
 })
 export class SideBarComponent {
-  constructor(private gameService: GameService) {}
-
+  private gameService = inject(GameService);
   readonly gameScore = computed(() => this.gameService.score);
 }
