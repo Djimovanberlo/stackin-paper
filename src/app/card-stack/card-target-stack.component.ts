@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CardTargetStack } from '../card';
 import { GameColour } from '../game-colour';
 import { CardTargetComponent } from '../card-target/card-target.component';
@@ -10,5 +10,5 @@ import { CardTargetComponent } from '../card-target/card-target.component';
   styleUrl: './card-target-stack.component.scss',
 })
 export class CardTargetStackComponent {
-  @Input({ required: true }) stack?: CardTargetStack;
+  readonly stack = input.required<CardTargetStack>();
 }

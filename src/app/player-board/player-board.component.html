@@ -1,1 +1,4 @@
-<p>player-board works!</p>
+@for (card of playerCards(); track $index) {
+<card-player [card]="card" />
+<div>{{ card.colour }}</div>
+}

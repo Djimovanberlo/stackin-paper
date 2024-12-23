@@ -1,5 +1,4 @@
-@if (stack) { @for (card of stack.cards; track $index) {
+@for (card of stack().cards; track $index) {
 <card-target [card]="card" />
-}
-<div>{{ stack.colour }}</div>
+<div>{{ stack().colour }}</div>
 }

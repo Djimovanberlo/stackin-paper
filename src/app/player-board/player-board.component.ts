@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { CardPlayerComponent } from '../card-player/card-player.component';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'player-board',
-  imports: [],
+  imports: [CardPlayerComponent],
   templateUrl: './player-board.component.html',
   styleUrl: './player-board.component.scss',
 })
-export class PlayerBoardComponent {}
+export class PlayerBoardComponent {
+  private gameService = inject(GameService);
+  readonly playerCards = computed(() => this.gameService.playerCards());
+}

@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { CardTarget } from '../card';
 
@@ -9,5 +9,5 @@ import { CardTarget } from '../card';
   styleUrl: './card-target.component.scss',
 })
 export class CardTargetComponent {
-  @Input({ required: true }) card?: CardTarget;
+  readonly card = input.required<CardTarget>();
 }
