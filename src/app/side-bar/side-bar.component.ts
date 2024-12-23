@@ -7,6 +7,6 @@ import { GameService } from '../game.service';
   styleUrl: './side-bar.component.scss',
 })
 export class SideBarComponent {
-  private gameService = inject(GameService);
-  readonly gameScore = computed(() => this.gameService.score);
+  gameService = inject(GameService);
+  readonly gameScore = computed(() => this.gameService.score());
 }
