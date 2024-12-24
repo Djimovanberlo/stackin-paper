@@ -3,7 +3,7 @@ import { CardComponent } from '../card/card.component';
 import { CardTarget } from '../card';
 
 @Component({
-  selector: 'card-target',
+  selector: 'app-card-target',
   imports: [CardComponent],
   templateUrl: './card-target.component.html',
   styleUrl: './card-target.component.scss',

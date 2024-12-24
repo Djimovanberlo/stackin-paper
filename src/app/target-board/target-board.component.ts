@@ -3,7 +3,7 @@ import { GameService } from '../game.service';
 import { CardTargetStackComponent } from '../card-stack/card-target-stack.component';
 
 @Component({
-  selector: 'target-board',
+  selector: 'app-target-board',
   imports: [CardTargetStackComponent],
   templateUrl: './target-board.component.html',
   styleUrl: './target-board.component.scss',

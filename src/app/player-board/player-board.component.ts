@@ -3,7 +3,7 @@ import { CardPlayerComponent } from '../card-player/card-player.component';
 import { GameService } from '../game.service';
 
 @Component({
-  selector: 'player-board',
+  selector: 'app-player-board',
   imports: [CardPlayerComponent],
   templateUrl: './player-board.component.html',
   styleUrl: './player-board.component.scss',

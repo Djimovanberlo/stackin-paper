@@ -3,7 +3,7 @@ import { CardComponent } from '../card/card.component';
 import { CardPlayer } from '../card';
 
 @Component({
-  selector: 'card-player',
+  selector: 'app-card-player',
   imports: [CardComponent],
   templateUrl: './card-player.component.html',
   styleUrl: './card-player.component.scss',
