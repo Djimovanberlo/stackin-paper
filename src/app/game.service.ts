@@ -1,5 +1,4 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { mockPlayerCards } from './mock-data';
 import { CardPlayer, CardTarget } from './card';
 import { GameColour } from './game-colour';
 import { initTargetCards } from './init-data';
@@ -9,7 +8,7 @@ import { initTargetCards } from './init-data';
 })
 export class GameService {
   public score = signal(0);
-  public playerCards = signal(mockPlayerCards);
+  public playerCards = signal<CardPlayer[]>([]);
   public targetCardsStacks = signal(initTargetCards);
   public nextTargetCard = signal(this.generateRandomTargetCard());
 
@@ -17,15 +16,40 @@ export class GameService {
     return this.targetCardsStacks().some((stack) => stack.cards.length > 3);
   });
 
-  public updateScore(newScore: number): void {
-    this.score.set(newScore);
-  }
+  public playCard(playedCard: CardPlayer): void {
+    this.targetCardsStacks.update((stacks) => {
+      return stacks.map((s) => {
+        if (s.colour !== playedCard.colour) {
+          return s;
+        }
 
-  public playCard(card: CardPlayer): void {
-    // TODO player card logic
+        const filteredCards = s.cards.filter(
+          (c) => !playedCard.values.some((v) => v === c.value)
+        );
+
+        this.score.update(
+          (score) => score + (s.cards.length - filteredCards.length)
+        );
+
+        return {
+          ...s,
+          cards: filteredCards,
+        };
+      });
+    });
+
+    // initialise player cards for new round ↓
+    this.playerCards.update((cards) => {
+      const newPlayerCard = this.generateRandomPlayerCard();
+      return [...cards.filter((c) => c !== playedCard), newPlayerCard];
+    });
+
+    // initialise target cards for new round ↓
     const newTargetCard = this.nextTargetCard();
     this.updateTargetCardsStacks(newTargetCard);
-    this.nextTargetCard.set(this.generateRandomTargetCard());
+
+    const nextTargetCard = this.generateRandomTargetCard();
+    this.nextTargetCard.set(nextTargetCard);
   }
 
   public updatePlayerCards(): void {
@@ -34,13 +58,16 @@ export class GameService {
   }
 
   public initialiseGame(): void {
-    this.score.set(0);
-
     // target cards
     const initTargetCard = this.generateRandomTargetCard();
     this.updateTargetCardsStacks(initTargetCard);
 
     // playercards
+    const playerCardsAmount = 2;
+    const playerCards = new Array(playerCardsAmount)
+      .fill(null)
+      .map(() => this.generateRandomPlayerCard());
+    this.playerCards.set(playerCards);
   }
 
   private updateTargetCardsStacks(newTargetCard: CardTarget): void {
@@ -79,14 +106,16 @@ export class GameService {
   }
 
   private generateRandomPlayerCard(): CardPlayer {
-    const valuesAmount = 3;
-    const values = new Array(valuesAmount)
-      .fill(null)
-      .map(this.generateRandomValue);
+    const valuesAmount = 2;
+    const uniqueValues = new Set<number>();
+
+    while (uniqueValues.size < valuesAmount) {
+      uniqueValues.add(this.generateRandomValue());
+    }
 
     return {
       colour: this.generateRandomColour(),
-      values,
+      values: Array.from(uniqueValues),
     };
   }
 
@@ -95,11 +124,5 @@ export class GameService {
       colour: this.generateRandomColour(),
       value: this.generateRandomValue(),
     };
-  }
-
-  ngOnInit(): void {
-    const initTargetCard = this.generateRandomTargetCard();
-    console.log('TEST');
-    this.updateTargetCardsStacks(initTargetCard);
   }
 }

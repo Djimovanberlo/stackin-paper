@@ -12,5 +12,4 @@ export class SideBarComponent {
   gameService = inject(GameService);
   readonly nextTargetCard = computed(() => this.gameService.nextTargetCard());
   readonly gameScore = computed(() => this.gameService.score());
-  readonly isGameLost = computed(() => this.gameService.isGameLost());
 }

@@ -11,6 +11,7 @@ import { GameService } from '../game.service';
 })
 export class GameBoardComponent {
   private gameService = inject(GameService);
+
   ngOnInit() {
     this.gameService.initialiseGame();
   }
