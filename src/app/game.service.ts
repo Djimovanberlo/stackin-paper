@@ -10,14 +10,20 @@ export class GameService {
   public score = signal(0);
   public playerCards = signal(mockPlayerCards);
   public targetCardsStacks = signal(mockTargetCards);
-  public nextTargetCard = signal(null); // TODO
+  public nextTargetCard = signal(this.generateRandomTargetCard());
 
   public isGameLost = computed(() => {
-    return this.targetCardsStacks().some((stack) => stack.cards.length > 3); // TODO
+    return this.targetCardsStacks().some((stack) => stack.cards.length > 3);
   });
 
   public updateScore(newScore: number): void {
     this.score.set(newScore);
+  }
+
+  public playCard() {
+    // TODO player card logic
+    this.updateTargetCardsStacks();
+    this.nextTargetCard.set(this.generateRandomTargetCard());
   }
 
   public updatePlayerCards(): void {
@@ -25,8 +31,9 @@ export class GameService {
     this.playerCards.update((cards) => [...cards, newPlayerCard]);
   }
 
-  public updateTargetCardsStacks(): void {
-    const newTargetCard = this.generateRandomTargetCard();
+  private updateTargetCardsStacks(): void {
+    const newTargetCard = this.nextTargetCard();
+    console.log('newTargetCard', newTargetCard);
 
     this.targetCardsStacks.update((stacks) => {
       let matchingStackFound = false;
