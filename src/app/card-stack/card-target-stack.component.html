@@ -1,4 +1,8 @@
 @for (card of stack().cards; track $index) {
-<app-card-target [card]="card" />
-<div>{{ stack().colour }}</div>
+<app-card-target
+  [card]="card"
+  [ngStyle]="{
+    '--i': $index,
+}"
+/>
 }

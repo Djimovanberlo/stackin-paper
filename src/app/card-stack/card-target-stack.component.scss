@@ -1,0 +1,11 @@
+:host {
+  position: relative;
+  width: 180px;
+  height: 300px;
+
+  app-card-target {
+    position: absolute;
+    top: calc(20px * var(--i));
+    left: calc(20px * var(--i));
+  }
+}
