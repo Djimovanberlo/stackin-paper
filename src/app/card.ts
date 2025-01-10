@@ -11,6 +11,6 @@ export interface CardTargetStack {
 }
 
 export interface CardPlayer {
-  colour?: GameColour;
+  colour: GameColour;
   values: number[];
 }

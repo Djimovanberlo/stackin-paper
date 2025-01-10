@@ -53,20 +53,31 @@ export class GameService {
     });
   }
 
+  private generateRandomValue(): number {
+    return Math.floor(Math.random() * 3) + 1; // 1-3
+  }
+
+  private generateRandomColour(): GameColour {
+    const colours = Object.values(GameColour);
+    return colours[Math.floor(Math.random() * colours.length)];
+  }
+
   private generateRandomPlayerCard(): CardPlayer {
+    const valuesAmount = 3;
+    const values = new Array(valuesAmount)
+      .fill(null)
+      .map(this.generateRandomValue);
+
     return {
-      values: [1, 1],
+      colour: this.generateRandomColour(),
+      values,
     };
   }
 
   private generateRandomTargetCard(): CardTarget {
-    const colours = Object.values(GameColour);
-    const randomColour = colours[Math.floor(Math.random() * colours.length)];
-    const randomValue = Math.floor(Math.random() * 3) + 1; // 1-3
-
     return {
-      colour: randomColour,
-      value: randomValue,
+      colour: this.generateRandomColour(),
+      value: this.generateRandomValue(),
     };
   }
 }
