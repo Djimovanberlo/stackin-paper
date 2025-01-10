@@ -1,5 +1,4 @@
 @for (card of playerCards(); track $index) {
 <app-card-player [card]="card" />
-<div>{{ card.colour }}</div>
 }
 <button (click)="updatePlayerCards()">Add card</button>
