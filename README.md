@@ -2,6 +2,20 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
 
+## Basic gameplay (work in progress)
+
+- Each turn, a new "target card" is generated. This card is announced in the previous turn like in Tetris
+- The target card has a colour (red, blue, green) and a value (1, 2, 3) - for now
+- The card is added to one of the three colour stacks in the target area
+- If one of the stacks reaches >3, the game is lost
+- The players also holds "player cards"
+- These have a colour and a number of values
+- When a player card is played, the target stack (colour) has all cards removed with the same value as the played card
+- When this happens the player receives points (bonus points for more cards destroyed)
+- Each turn, the player recieves a random new card
+- The player holds 3 cards in total
+- By playing cards the player tries to collect points by keeping the stacks low
+
 ## Development server
 
 To start a local development server, run:

@@ -3,5 +3,11 @@
     width: 120px;
     height: 200px;
     background-color: var(--card-colour);
+
+    p {
+      width: fit-content;
+      height: fit-content;
+      margin-inline: auto;
+    }
   }
 }

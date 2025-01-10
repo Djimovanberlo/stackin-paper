@@ -27,6 +27,7 @@ export class GameService {
 
   public updateTargetCardsStacks(): void {
     const newTargetCard = this.generateRandomTargetCard();
+
     this.targetCardsStacks.update((stacks) => {
       let matchingStackFound = false;
 
@@ -59,9 +60,13 @@ export class GameService {
   }
 
   private generateRandomTargetCard(): CardTarget {
+    const colours = Object.values(GameColour);
+    const randomColour = colours[Math.floor(Math.random() * colours.length)];
+    const randomValue = Math.floor(Math.random() * 3) + 1; // 1-3
+
     return {
-      colour: GameColour.Red,
-      value: 1,
+      colour: randomColour,
+      value: randomValue,
     };
   }
 }
