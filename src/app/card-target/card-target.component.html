@@ -1,4 +1,8 @@
-<app-card>
+<app-card
+  [ngStyle]="{
+    '--card-colour': this.card().colour
+  }"
+>
   <ng-container slot="card-content">
     <p>{{ card().value }}</p>
     <p>{{ card().colour }}</p>
