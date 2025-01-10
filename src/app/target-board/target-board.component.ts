@@ -10,8 +10,6 @@ import { CardTargetStackComponent } from '../card-stack/card-target-stack.compon
 })
 export class TargetBoardComponent {
   private gameService = inject(GameService);
-  playCard = () => this.gameService.playCard();
-
   readonly targetCardsStacks = computed(() =>
     this.gameService.targetCardsStacks()
   );

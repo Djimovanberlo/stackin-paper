@@ -10,7 +10,5 @@ import { GameService } from '../game.service';
 })
 export class PlayerBoardComponent {
   private gameService = inject(GameService);
-
   readonly playerCards = computed(() => this.gameService.playerCards());
-  updatePlayerCards = () => this.gameService.updatePlayerCards();
 }

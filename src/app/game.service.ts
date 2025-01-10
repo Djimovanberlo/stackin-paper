@@ -1,7 +1,8 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { mockPlayerCards, mockTargetCards } from './mock-data';
+import { mockPlayerCards } from './mock-data';
 import { CardPlayer, CardTarget } from './card';
 import { GameColour } from './game-colour';
+import { initTargetCards } from './init-data';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { GameColour } from './game-colour';
 export class GameService {
   public score = signal(0);
   public playerCards = signal(mockPlayerCards);
-  public targetCardsStacks = signal(mockTargetCards);
+  public targetCardsStacks = signal(initTargetCards);
   public nextTargetCard = signal(this.generateRandomTargetCard());
 
   public isGameLost = computed(() => {
@@ -20,9 +21,10 @@ export class GameService {
     this.score.set(newScore);
   }
 
-  public playCard() {
+  public playCard(card: CardPlayer): void {
     // TODO player card logic
-    this.updateTargetCardsStacks();
+    const newTargetCard = this.nextTargetCard();
+    this.updateTargetCardsStacks(newTargetCard);
     this.nextTargetCard.set(this.generateRandomTargetCard());
   }
 
@@ -31,10 +33,7 @@ export class GameService {
     this.playerCards.update((cards) => [...cards, newPlayerCard]);
   }
 
-  private updateTargetCardsStacks(): void {
-    const newTargetCard = this.nextTargetCard();
-    console.log('newTargetCard', newTargetCard);
-
+  private updateTargetCardsStacks(newTargetCard: CardTarget): void {
     this.targetCardsStacks.update((stacks) => {
       let matchingStackFound = false;
 
@@ -86,5 +85,10 @@ export class GameService {
       colour: this.generateRandomColour(),
       value: this.generateRandomValue(),
     };
+  }
+
+  ngOnInit(): void {
+    const initTargetCard = this.generateRandomTargetCard();
+    this.updateTargetCardsStacks(initTargetCard);
   }
 }

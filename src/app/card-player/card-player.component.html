@@ -2,6 +2,7 @@
   [ngStyle]="{
     '--card-colour': this.card().colour
   }"
+  (click)="this.playCard()"
 >
   <ng-container slot="card-content">
     <p>{{ card().values }}</p>
