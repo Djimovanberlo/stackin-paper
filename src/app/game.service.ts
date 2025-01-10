@@ -33,6 +33,16 @@ export class GameService {
     this.playerCards.update((cards) => [...cards, newPlayerCard]);
   }
 
+  public initialiseGame(): void {
+    this.score.set(0);
+
+    // target cards
+    const initTargetCard = this.generateRandomTargetCard();
+    this.updateTargetCardsStacks(initTargetCard);
+
+    // playercards
+  }
+
   private updateTargetCardsStacks(newTargetCard: CardTarget): void {
     this.targetCardsStacks.update((stacks) => {
       let matchingStackFound = false;
@@ -89,6 +99,7 @@ export class GameService {
 
   ngOnInit(): void {
     const initTargetCard = this.generateRandomTargetCard();
+    console.log('TEST');
     this.updateTargetCardsStacks(initTargetCard);
   }
 }

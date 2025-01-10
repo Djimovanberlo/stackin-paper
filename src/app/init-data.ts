@@ -1,4 +1,4 @@
-import { CardPlayer, CardTargetStack } from './card';
+import { CardTargetStack } from './card';
 import { GameColour } from './game-colour';
 
 export const initTargetCards: CardTargetStack[] = [
