@@ -3,8 +3,17 @@
     width: 120px;
     height: 200px;
     background-color: var(--card-colour);
+    display: grid;
+    align-items: center;
+    position: relative;
 
     p {
+      position: absolute;
+      top: 7px;
+      left: 7px;
+    }
+
+    h4 {
       width: fit-content;
       height: fit-content;
       margin-inline: auto;

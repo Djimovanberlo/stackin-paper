@@ -3,8 +3,16 @@
     width: 90px;
     height: 150px;
     background-color: var(--card-colour);
+    display: grid;
+    align-items: center;
 
-    p {
+    &:hover {
+      transform: scale(1.1);
+      transition: all 200ms;
+      cursor: pointer;
+    }
+
+    h4 {
       width: fit-content;
       height: fit-content;
       margin-inline: auto;
