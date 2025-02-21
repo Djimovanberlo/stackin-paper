@@ -16,10 +16,6 @@ export class GameService {
     return this.targetCardsStacks().some((stack) => stack.cards.length > 3);
   });
 
-  ngOnInit() {
-    console.log('TEST SERVICE');
-  }
-
   public playCard(playedCard: CardPlayer): void {
     this.targetCardsStacks.update((stacks) => {
       return stacks.map((s) => {

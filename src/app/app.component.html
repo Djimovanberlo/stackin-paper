@@ -1,6 +1,9 @@
 <main class="main">
   <app-game-board />
   <app-side-bar />
+  @if (isGameLost()) {
+  <app-game-lost-modal />
+  }
 </main>
 
 <router-outlet />
