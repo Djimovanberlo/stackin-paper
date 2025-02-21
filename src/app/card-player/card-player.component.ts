@@ -13,5 +13,6 @@ import { GameService } from '../game.service';
 export class CardPlayerComponent {
   readonly card = input.required<CardPlayer>();
   private gameService = inject(GameService);
+
   playCard = () => this.gameService.playCard(this.card());
 }

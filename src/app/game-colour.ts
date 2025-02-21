@@ -1,5 +1,5 @@
 export enum GameColour {
-  Red = 'red',
-  Green = 'green',
-  Blue = 'blue',
+  Orange = 'var(--colour-orange)',
+  Purple = 'var(--colour-purple)',
+  Green = 'var(--colour-green)',
 }

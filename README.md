@@ -5,7 +5,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 ## Basic gameplay (work in progress)
 
 - Each turn, a new "target card" is generated. This card is announced in the previous turn like in Tetris
-- The target card has a colour (red, blue, green) and a value (1, 2, 3) - for now
+- The target card has a colour (orange, purple, green) and a value (1, 2, 3) - for now
 - The card is added to one of the three colour stacks in the target area
 - If one of the stacks reaches >3, the game is lost
 - The players also holds "player cards"

@@ -3,11 +3,11 @@ import { GameColour } from './game-colour';
 
 export const initTargetCards: CardTargetStack[] = [
   {
-    colour: GameColour.Red,
+    colour: GameColour.Orange,
     cards: [],
   },
   {
-    colour: GameColour.Blue,
+    colour: GameColour.Purple,
     cards: [],
   },
   {
